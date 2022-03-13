@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>log in</title>
+
+    <link rel="stylesheet" href="/css/auth/login.css">
+</head>
+
+<body>
+    <main>
+        <h1>login page</h1>
+        <form id="loginForm">
+            <label for="email">email</label>
+            <input type="email" name="email" id="email">
+            <label for="password">password</label>
+            <input type="password" name="password" id="password">
+            <button type="submit">log in</button>
+        </form>
+        <div id="error-container">
+            <p></p>
+        </div>
+        <p>don't have an account? <a href="/auth/register">sign-up</a></p>
+    </main>
+</body>
+<script src="/js/auth/login.js"></script>
+
+
+</html>

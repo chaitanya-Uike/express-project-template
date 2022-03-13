@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#loginForm{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
