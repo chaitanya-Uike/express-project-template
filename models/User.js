@@ -21,11 +21,12 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
-UserSchema.pre('save', async function () {
+UserSchema.methods.saveHash = async function () {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(this.password, salt)
     this.password = hash
-})
+    await this.save()
+}
 
 UserSchema.methods.getJWT = function () {
     const payload = { userId: this._id, username: this.username }

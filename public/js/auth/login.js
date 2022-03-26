@@ -1,5 +1,5 @@
 const loginForm = document.getElementById('loginForm')
-const errorContainer = document.getElementById('error-container')
+const submitBtn = document.getElementById('submitBtn')
 
 loginForm.addEventListener('submit', async e => {
     e.preventDefault()
@@ -22,5 +22,30 @@ loginForm.addEventListener('submit', async e => {
     if (res.ok)
         window.location.href = "/";
 
-    errorContainer.querySelector('p').textContent = data.msg
+    showToast(data.msg)
 })
+
+
+// submit btn animation handler
+
+submitBtn.addEventListener("mouseenter", e => {
+    e.target.classList.remove("submit-mouse-out")
+    e.target.classList.add("submit-mouse-in")
+})
+
+submitBtn.addEventListener("mouseleave", e => {
+    e.target.classList.remove("submit-mouse-in")
+    e.target.classList.add("submit-mouse-out")
+})
+
+
+function showToast(message) {
+    Toastify({
+        text: message,
+        className: "toast",
+        duration: 5000,
+        gravity: "bottom",
+        position: "center",
+        stopOnFocus: true,
+    }).showToast();
+}

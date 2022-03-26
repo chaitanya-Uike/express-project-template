@@ -1,5 +1,5 @@
 const registrationForm = document.getElementById('registrationForm')
-const errorContainer = document.getElementById('error-container')
+const submitBtn = document.getElementById('submitBtn')
 
 
 registrationForm.addEventListener('submit', async e => {
@@ -9,7 +9,7 @@ registrationForm.addEventListener('submit', async e => {
     const password = e.target['password'].value
 
     if (password.length < 8) {
-        errorContainer.querySelector('p').textContent = "password should be of atleast 8 characters"
+        showToast("password should be of atleast 8 characters")
         return;
     }
 
@@ -29,5 +29,31 @@ registrationForm.addEventListener('submit', async e => {
         window.location.href = "/";
     }
 
-    errorContainer.querySelector('p').textContent = data.msg
+    showToast(data.msg)
 })
+
+
+
+// submit btn animation handler
+
+submitBtn.addEventListener("mouseenter", e => {
+    e.target.classList.remove("submit-mouse-out")
+    e.target.classList.add("submit-mouse-in")
+})
+
+submitBtn.addEventListener("mouseleave", e => {
+    e.target.classList.remove("submit-mouse-in")
+    e.target.classList.add("submit-mouse-out")
+})
+
+
+function showToast(message) {
+    Toastify({
+        text: message,
+        className: "toast",
+        duration: 5000,
+        gravity: "bottom",
+        position: "center",
+        stopOnFocus: true,
+    }).showToast();
+}

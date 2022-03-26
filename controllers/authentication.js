@@ -1,8 +1,9 @@
 const User = require('../models/User')
 const { StatusCodes } = require('http-status-codes')
 
-const registerUser = async (req, res, next) => {
+const registerUser = async (req, res) => {
     const user = await User.create({ ...req.body })
+    await user.saveHash()
     const token = user.getJWT()
     res.cookie('JWT', token)
     res.status(StatusCodes.CREATED).json({ "msg": "user created successfully" })

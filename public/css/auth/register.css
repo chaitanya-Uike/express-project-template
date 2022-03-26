@@ -1,17 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    color: white
+}
+
+:root{
+    --primary-black : #17181E;
 }
 
 main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
+    background-color: var(--primary-black);
+    display:flex;
     flex-direction: column;
+    justify-content:center;
+    align-items:center;
+}
+
+main h1{
+    font-size:4.5rem;
+    margin-bottom:4rem;
+    letter-spacing: 0.1rem;
 }
 
 #registrationForm{
-    display: flex;
+    display:flex;
     flex-direction: column;
-    row-gap: 10px;
+    width: 30rem;
+    row-gap: 1.5rem;
+}
+
+#registrationForm input{
+    width: 100%;
+    border: 0.2rem solid gray;
+    border-radius:1rem;
+    outline: none;
+    background-color: var(--primary-black);
+    padding:0.7rem 1.4rem;
+    font-size:1.7rem;
+    color:white;
+}
+
+/* background color changes after autofill to fix that use this */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px var(--primary-black) inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
+#submitBtn{
+    padding: 1.2rem 0;
+    border: none;
+    border-radius:1rem;
+    font-size:1.8rem;
+    font-weight:700;
+    margin-top: 3rem;
+    cursor: pointer;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    color:white;
+}
+
+.submit-mouse-in{
+    animation: gradientIn 1.5s ease-in-out forwards;
+}
+
+.submit-mouse-out{
+    animation: gradientOut 1.5s ease-in-out forwards;
+}
+
+@keyframes gradientIn {
+	0% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 100% 50%;
+	}
+}
+
+@keyframes gradientOut {
+	0% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#redirect-text{
+    margin-top:3rem;
+    font-size:1.2rem;
+    color:gray;
+    letter-spacing:0.1rem;
+}
+
+#redirect-text a{
+    text-decoration: none;
+    color: white;
+    font-weight:700;
+}
+
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+    top: -0.8rem;
+    left: 1.6rem;
+    font-size: 11px;
+}
+
+.form-group{
+    position: relative;
+}
+
+.floating-label{
+    position: absolute;
+    pointer-events: none;
+    left: 1.6rem;
+    top: 0.7rem;
+    font-size:1.5rem;
+    background-color:var(--primary-black);
+    padding:0 0.3rem;
+    color: gray;
+    transition: 0.2s ease all;
+}
+
+.toast{
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 5s ease-in-out infinite;
+    font-size: 1.2rem;
+    border-radius:1rem;
+}
+
+@keyframes gradient {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+    100% {
+		background-position: 0% 50%;
+	}
 }
